@@ -5,7 +5,7 @@ import logging
 logging.basicConfig(level=logging.DEBUG, format='%(levelname)s: %(message)s')
 
 def myfunction(args):
-    logging.debug('start myfunction')
+    logging.debug('start of function')
     return 'ret'
 
 class TestCodeChallege(unittest.TestCase):
