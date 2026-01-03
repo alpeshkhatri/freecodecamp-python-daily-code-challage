@@ -1,15 +1,22 @@
 from collections import Counter
+import re
 
 data = ""
 print("enter data (exit to exit) : ")
-while (line := input()) != "exit" :
-    data += line + "\n"
+try :
+  while (line := input()) != "exit" :
+      data += line + "\n"
+except EOFError:
+  pass
 
 print(data)
 
-data = data.replace('/','-').strip().splitlines()
+# data = data.replace('/','-').strip()
+# data = data.replace(' ','-').strip()
+data = re.sub(r'[^\d\n]+','-',data)
+data = data.splitlines()
 
-# print(data)
+print(data)
 
 for idx in range(0,6) :
     col = list(map(lambda x: x.split('-')[idx], data))
