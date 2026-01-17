@@ -1,4 +1,6 @@
 import unittest
+from typing import List
+
 
 # Description
 
@@ -12,7 +14,7 @@ class Solution:
         return args
 
 
-class TestCodeChallege(unittest.TestCase):
+class TestCodeChallenge(unittest.TestCase):
     def setUp(self):
         self.sol = Solution()
     def tearDown(self):
