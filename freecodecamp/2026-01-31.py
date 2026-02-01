@@ -21,6 +21,7 @@ import unittest
 
 import logging
 import datetime
+import re
 
 logging.basicConfig(level=logging.DEBUG, format="%(levelname)s: %(message)s")
 
@@ -43,15 +44,9 @@ months = ['January','February','March','April','May','June','July','August','Sep
 
 global_data = {}
 for line in data :
-    dates, zodiac = line.split("\t")
-    zodiac = zodiac.strip('"')
-    start_date , end_date = dates.split('-')
-    start_date = start_date.strip()
-    end_date   = end_date.strip()
-    start_date = start_date.split(" ")
-    end_date   = end_date.split(" ")
-    start_date = datetime.datetime(1900,months.index(start_date[0]) + 1,int(start_date[1]))
-    end_date   = datetime.datetime(1900,months.index(end_date[0]) + 1,int(end_date[1]))
+    start_month, start_day, end_month, end_day, zodiac ,_ = re.split(r'[\s\"-]+',line)
+    start_date = datetime.datetime(1900,months.index(start_month) + 1,int(start_day))
+    end_date   = datetime.datetime(1900,months.index(end_month) + 1,int(end_day))
     if start_date.month == 12 :## rolling over to next year.
         global_data[(start_date,datetime.datetime(1900,12,31))] = zodiac
         global_data[(datetime.datetime(1900,1,1),datetime.datetime(1900,end_date.month,end_date.day))] = zodiac
