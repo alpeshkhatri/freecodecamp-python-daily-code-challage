@@ -1,0 +1,16 @@
+#!/bin/bash
+if [ -z ${1} ] ; then
+ echo "Usage : ${0} filename.py"
+ exit 2
+fi
+cd neetcode
+if [ -e ${1} ] ; then
+  echo "${1} exist. pass different filename"
+  exit 2
+fi
+cp template.py ${1}
+ls -ltr | tail
+cd .. 
+code .
+
+echo ${1}
