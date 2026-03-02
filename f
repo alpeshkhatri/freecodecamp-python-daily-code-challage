@@ -1,6 +1,8 @@
 #!/bin/bash
 cd freecodecamp
 cp template.py $(date +%Y-%m-%d).py
+cp template.js $(date +%Y-%m-%d).js
+
 ls -ltr | tail
 cd .. 
 code .
