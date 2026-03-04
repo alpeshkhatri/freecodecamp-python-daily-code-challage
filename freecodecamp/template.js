@@ -1,7 +1,7 @@
-function myFunction(str) {
-  console.log(str);
+function myFunction(args) {
+  console.log(args);
 
-  return str;
+  return args;
 }
 // Tests
 const tests = [
@@ -10,6 +10,7 @@ const tests = [
 ];
 
 tests.forEach(([result, expected], i) => {
-  const pass = result === expected;
+  const pass = JSON.stringify(result) === JSON.stringify(expected);
+  // console.log(pass, JSON.stringify(result), JSON.stringify(expected));
   console.log(`Test ${i + 1}: ${pass ? "PASS" : "FAIL"}`);
 });
