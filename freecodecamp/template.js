@@ -1,5 +1,5 @@
 function myFunction(args) {
-  console.log(args);
+  console.log(JSON.stringify(args));
 
   return args;
 }
